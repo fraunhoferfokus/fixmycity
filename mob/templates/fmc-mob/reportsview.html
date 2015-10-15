@@ -1,0 +1,47 @@
+<!--
+/*******************************************************************************
+ * 
+ * Copyright (c) 2015 Fraunhofer FOKUS, All rights reserved.
+ * 
+ * This library is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation; either
+ * version 3.0 of the License, or (at your option) any later version.
+ * 
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
+ * 
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this library. If not, see <http://www.gnu.org/licenses/>. 
+ * 
+ * AUTHORS: Louay Bassbouss (louay.bassbouss@fokus.fraunhofer.de)
+ *
+ ******************************************************************************/
+
+-->
+{% extends "fmc-mob/base.html" %}
+{% block body %}
+<!-- Start of page: #reportsview -->
+<div data-role="page" id="reportsview" data-theme="a" data-dom-cache="true">
+  <div data-role="header">
+    <a href="{% url mob-menu %}" data-icon="arrow-l" data-iconpos="notext" data-direction="reverse" data-rel="back">Back</a>
+    <h1 id="title">Report List</h1>
+    <a href="{% url mob-menu %}" data-icon="home" data-iconpos="notext" data-direction="reverse">Home</a>
+  </div><!-- /header -->
+
+  <div data-role="content">
+    <ul data-role="listview" id="reportsList" data-inset="true"></ul>
+  </div><!-- /content -->
+
+  <div style="position: absolute; bottom: 0px;" data-role="footer" data-theme="a">
+    <div id="buttons" data-role="controlgroup" data-type="horizontal" style="text-align: center;">
+      <button data-icon="back" data-iconpos="left" id="pagePrev">Prev</a>
+      <button data-icon="forward" data-iconpos="right" id="pageNext">Next</a>
+    </div>
+  </div><!-- /footer -->
+
+</div><!-- /page -->
+{% endblock %}
+

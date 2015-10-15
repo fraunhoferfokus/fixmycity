@@ -1,0 +1,86 @@
+[
+    {
+        "pk": 1, 
+        "model": "api.status", 
+        "fields": {
+            "title": "eingetragen"
+        }
+    }, 
+    {
+        "pk": 2, 
+        "model": "api.status", 
+        "fields": {
+            "title": "angenommen"
+        }
+    }, 
+    {
+        "pk": 3, 
+        "model": "api.status", 
+        "fields": {
+            "title": "in Arbeit"
+        }
+    }, 
+    {
+        "pk": 4, 
+        "model": "api.status", 
+        "fields": {
+            "title": "erledigt"
+        }
+    }, 
+    {
+        "pk": 5, 
+        "model": "api.status", 
+        "fields": {
+            "title": "abschlie\u00dfend bearbeitet"
+        }
+    }, 
+    {
+        "pk": 1, 
+        "model": "api.category", 
+        "fields": {
+            "title": "Verkehrsgef\u00e4hrdung"
+        }
+    }, 
+    {
+        "pk": 2, 
+        "model": "api.category", 
+        "fields": {
+            "title": "Abfall/M\u00fcll"
+        }
+    }, 
+    {
+        "pk": 3, 
+        "model": "api.category", 
+        "fields": {
+            "title": "Abwasser/Wasser"
+        }
+    }, 
+    {
+        "pk": 4, 
+        "model": "api.category", 
+        "fields": {
+            "title": "\u00d6ffentliches Gr\u00fcn/Spielplatz"
+        }
+    }, 
+    {
+        "pk": 5, 
+        "model": "api.category", 
+        "fields": {
+            "title": "Vandalimus"
+        }
+    }, 
+    {
+        "pk": 6, 
+        "model": "api.category", 
+        "fields": {
+            "title": "Geruchsbel\u00e4stigung"
+        }
+    }, 
+    {
+        "pk": 7, 
+        "model": "api.category", 
+        "fields": {
+            "title": "Tiere/Ungeziefer"
+        }
+    }
+]

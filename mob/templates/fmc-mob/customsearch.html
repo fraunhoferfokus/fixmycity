@@ -1,0 +1,134 @@
+<!--
+/*******************************************************************************
+ * 
+ * Copyright (c) 2015 Fraunhofer FOKUS, All rights reserved.
+ * 
+ * This library is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation; either
+ * version 3.0 of the License, or (at your option) any later version.
+ * 
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
+ * 
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this library. If not, see <http://www.gnu.org/licenses/>. 
+ * 
+ * AUTHORS: Louay Bassbouss (louay.bassbouss@fokus.fraunhofer.de)
+ *
+ ******************************************************************************/
+
+-->
+{% extends "fmc-mob/base.html" %}
+{% block body %}
+<!-- Start of page: #customsearch -->
+<div data-role="page" id="customsearch" data-theme="a">
+  <div data-role="header">
+    <a href="{% url mob-menu %}" data-icon="arrow-l" data-iconpos="notext" data-direction="reverse" data-rel="back">Back</a>
+    <h1>Report Search</h1>
+    <a href="{% url mob-menu %}" data-icon="home" data-iconpos="notext" data-direction="reverse">Home</a>
+  </div><!-- /header -->
+
+    <div data-role="content">
+        <!-- Location toggle -->
+        <div data-role="fieldcontain">
+            <label for="locationOnOff">Search by location:</label>
+            <select name="locationOnOff" id="locationOnOff" data-role="slider">
+                <option value="false">Off</option>
+                <option value="true">On</option>
+            </select>
+        </div>
+
+        <!-- Latitude -->
+        <form id="search_form" action="{% url mob-reports-list %}">
+            <div id="location_select">
+                <div data-role="fieldcontain">
+                    <label for="latitude">Latitude:</label>
+                    <input type="text" name="latitude" id="latitude" />
+                </div>
+
+                <!-- Longitude -->
+                <div data-role="fieldcontain">
+                    <label for="longitude">Longitude:</label>
+                    <input type="text" name="longitude" id="longitude" />
+                </div>
+
+                <!-- The radius slider -->
+                <div data-role="fieldcontain">
+                    <label for="radius">Radius (km):</label>
+                    <input type="range" name="radius" id="radius" value="1" min="1" max="40" />
+                </div>
+            </div>
+
+            <!-- The tags -->
+            <div data-role="fieldcontain">
+                <label for="tags">Tags:</label>
+                <input type="text" name="tags__icontains" id="tags" />
+            </div>
+
+            <!-- Username -->
+            <div data-role="fieldcontain">
+                <label for="user">User name:</label>
+                <input type="text" name="user__username__icontains" id="user" />
+            </div>
+
+            <!-- Category picker -->
+            <div data-role="fieldcontain" id="categories">
+                <label for="categoryId" class="select">Category:</label>
+                <select name="category" id="categoryId" data-native-menu="false"></select>
+            </div>
+
+            <!-- Status picker -->
+            <div data-role="fieldcontain" id="status">
+                <label for="statusId" class="select">Status:</label>
+                <select name="status" id="statusId" data-native-menu="false"></select>
+            </div>
+
+            <!-- Only with photos -->
+            <div data-role="fieldcontain">
+                <label for="slideronoff">Only with photos:</label>
+                <select name="onlyWithPhotos" id="slideronoff" data-role="slider">
+                    <option value="0">Off</option>
+                    <option value="1">On</option>
+                </select>
+            </div>
+
+            <!-- Min rating -->
+            <div data-role="fieldcontain">
+                <label for="minRating">Min rating:</label>
+                <input type="range" name="minRating" id="minRating" value="1" min="1" max="5" />
+            </div>
+
+            <!-- Max rating -->
+            <div data-role="fieldcontain">
+                <label for="maxRating">Max rating:</label>
+                <input type="range" name="maxRating" id="maxRating" value="5" min="1" max="5" />
+            </div>
+
+            <!-- Order by -->
+            <div data-role="fieldcontain" id="categories">
+                <label for="orderBy" class="select">Order by:</label>
+                <select name="order_by" id="orderBy" data-native-menu="false">
+                    <option value="-creationTime">Date (newest first)</option>
+                    <option value="creationTime">Date (oldest first)</option>
+                    <option value="-user">User ID (descending)</option>
+                    <option value="user">User ID (ascending)</option>
+                </select>
+            </div>
+
+            <!-- Offset -->
+            <div data-role="fieldcontain">
+                <label for="offset">Offset:</label>
+                <input type="range" name="offset" id=offset value="0" min="0" max="100" />
+            </div>
+
+            <!-- Search Button -->
+            <p><input type="submit" data-icon="search" id="submit_search" value="Search" /></p>
+        </form>
+
+    </div><!-- /content -->
+</div><!-- /page -->
+{% endblock %}
+

@@ -1,0 +1,65 @@
+<!--
+/*******************************************************************************
+ * 
+ * Copyright (c) 2015 Fraunhofer FOKUS, All rights reserved.
+ * 
+ * This library is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation; either
+ * version 3.0 of the License, or (at your option) any later version.
+ * 
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
+ * 
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this library. If not, see <http://www.gnu.org/licenses/>. 
+ * 
+ * AUTHORS: Louay Bassbouss (louay.bassbouss@fokus.fraunhofer.de)
+ *
+ ******************************************************************************/
+
+-->
+{% load value_from_settings %}
+{% value_from_settings "MINIFIED" as minified %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <title>FixMyCity Mobile {% block title %}{% endblock %}</title>
+
+        <link rel="stylesheet" href="{{ STATIC_URL }}fmc-mob/jquery/fmc.min.css" />
+        <link rel="stylesheet" href="{{ STATIC_URL }}fmc-mob/jquery/jquery.mobile.structure-1.0.min.css" />
+        {% if minified %}
+        <link rel="stylesheet" href="{{ STATIC_URL }}fmc-mob/css/style.min.css" />
+        {% else %}
+        <link rel="stylesheet" href="{{ STATIC_URL }}fmc-mob/css/style.css" />
+        {% endif %}
+
+        {% block extrascripts %}{% endblock %}
+        <script src="{{ STATIC_URL }}fmc-mob/jquery/jquery-1.6.4.min.js"></script>
+        <script src="{{ STATIC_URL }}fmc-mob/jquery/jquery.mobile-1.0.min.js"></script>
+    </head>
+
+    <body>
+          <div data-role="page" {% block pageargs %}id="somepage"{% endblock %} data-theme="a">
+
+            <div data-role="header" align="center" data-theme="a">
+                <img src="{{ STATIC_URL }}fmc-mob/img/logo_fixmycity.png" alt="fixmycity" style="height:65%;" />
+                {% if not request.session.phonegap %}
+                <a href="/fmc-mob/" data-icon="home" data-iconpos="notext" data-direction="reverse"
+                  data-ajax="false" class="ui-btn-right jqm-home">Home</a>
+                {% endif %}
+            </div><!-- /header -->
+
+            <div data-role="content">
+                <h2>{% block heading %}{% endblock %}</h2>
+                {% block content %}{% endblock %}
+            </div><!-- /content -->
+        </div>
+    </body>
+</html>
+

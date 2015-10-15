@@ -1,0 +1,86 @@
+[
+    {
+        "pk": 1,
+        "model": "api.status",
+        "fields": {
+            "title": "Submitted"
+        }
+    },
+    {
+        "pk": 2,
+        "model": "api.status",
+        "fields": {
+            "title": "Accepted"
+        }
+    },
+    {
+        "pk": 3,
+        "model": "api.status",
+        "fields": {
+            "title": "In process"
+        }
+    },
+    {
+        "pk": 4,
+        "model": "api.status",
+        "fields": {
+            "title": "Done"
+        }
+    },
+    {
+        "pk": 5,
+        "model": "api.status",
+        "fields": {
+            "title": "Completely resolved"
+        }
+    },
+    {
+        "pk": 1,
+        "model": "api.category",
+        "fields": {
+            "title": "Traffic hazard"
+        }
+    },
+    {
+        "pk": 2,
+        "model": "api.category",
+        "fields": {
+            "title": "Trash / Littering"
+        }
+    },
+    {
+        "pk": 3,
+        "model": "api.category",
+        "fields": {
+            "title": "Water / Flooding"
+        }
+    },
+    {
+        "pk": 4,
+        "model": "api.category",
+        "fields": {
+            "title": "Park / Playground"
+        }
+    },
+    {
+        "pk": 5,
+        "model": "api.category",
+        "fields": {
+            "title": "Vandalism"
+        }
+    },
+    {
+        "pk": 6,
+        "model": "api.category",
+        "fields": {
+            "title": "Odor nuisance"
+        }
+    },
+    {
+        "pk": 7,
+        "model": "api.category",
+        "fields": {
+            "title": "Wild animals / Vermin"
+        }
+    }
+]

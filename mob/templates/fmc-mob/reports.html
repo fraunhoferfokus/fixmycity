@@ -1,0 +1,44 @@
+<!--
+/*******************************************************************************
+ * 
+ * Copyright (c) 2015 Fraunhofer FOKUS, All rights reserved.
+ * 
+ * This library is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation; either
+ * version 3.0 of the License, or (at your option) any later version.
+ * 
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
+ * 
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this library. If not, see <http://www.gnu.org/licenses/>. 
+ * 
+ * AUTHORS: Louay Bassbouss (louay.bassbouss@fokus.fraunhofer.de)
+ *
+ ******************************************************************************/
+
+-->
+{% extends "fmc-mob/base.html" %}
+{% block body %}
+<!-- the main menu #main -->
+<div data-role="page" id="reports" data-theme="a" data-dom-cache="true">
+
+    <div data-role="header">
+      <a href="{% url mob-menu %}" data-icon="arrow-l" data-iconpos="notext" data-direction="reverse" data-rel="back">Back</a>
+      <h1>View Reports</h1>
+      <a href="{% url mob-menu %}" data-icon="home" data-iconpos="notext" data-direction="reverse">Home</a>
+    </div><!-- /header -->
+
+    <div data-role="content">
+        <p><a href="{% url mob-reports-list %}?_heading=My Reports&user={{ user.id }}"
+            id="myreports_link" data-role="button" data-icon="star">My Reports</a></p>
+        <p><a href="{% url mob-reports-list %}?_heading=Recent Reports&order_by=-creationTime"
+            data-role="button" data-icon="grid">Recent Reports</a></p>
+        <p><a href="{% url mob-reports-nearby %}" data-role="button" data-icon="alert">Reports Nearby</a></p>
+    </div><!-- /content -->
+</div><!-- /page -->
+{% endblock %}
+

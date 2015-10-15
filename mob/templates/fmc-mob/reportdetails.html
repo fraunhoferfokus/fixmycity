@@ -1,0 +1,116 @@
+<!--
+/*******************************************************************************
+ * 
+ * Copyright (c) 2015 Fraunhofer FOKUS, All rights reserved.
+ * 
+ * This library is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation; either
+ * version 3.0 of the License, or (at your option) any later version.
+ * 
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
+ * 
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this library. If not, see <http://www.gnu.org/licenses/>. 
+ * 
+ * AUTHORS: Louay Bassbouss (louay.bassbouss@fokus.fraunhofer.de)
+ *
+ ******************************************************************************/
+
+-->
+{% extends "fmc-mob/base.html" %}
+{% block body %}
+<!-- Start of page: #reportdetails -->
+<div data-role="page" id="reportdetails" data-theme="a">
+    <div data-role="header">
+      <a href="{% url mob-menu %}" data-icon="arrow-l" data-iconpos="notext" data-direction="reverse" data-rel="back">Back</a>
+      <h1 id="title_detail">Report Detail</h1>
+      <a href="{% url mob-menu %}" data-icon="home" data-iconpos="notext" data-direction="reverse">Home</a>
+    </div><!-- /header -->
+
+    <div data-role="content">
+        <!-- Image -->
+        <div class="ui-bar-c ui-corner-all ui-shadow" id="image_container_detail">
+          <img src="" id="image_detail" />
+        </div>
+
+        <!-- Description -->
+        <div data-role="fieldcontain">
+            <label for="textarea_detail">Description:</label>
+            <textarea cols="40" rows="8" name="textarea" id="textarea_detail" ReadOnly></textarea>
+        </div>
+
+        <!-- Status -->
+        <div data-role="fieldcontain">
+            <label for="status_detail">Status:</label>
+            <input type="text" name="statusId" id="status_detail" ReadOnly />
+        </div>
+
+        <!-- Category -->
+        <div data-role="fieldcontain">
+            <label for="category_detail">Category:</label>
+            <input type="text" name="categoryId" id="category_detail" ReadOnly />
+        </div>
+
+        <div>
+            <label for="avg_rating_detail">Average rating:</label>
+            <div id="avg_rating_detail"></div>
+
+            <label for="my_rating_detail">My rating:</label>
+            <div id="my_rating_detail"></div>
+        </div>
+
+        <!-- Tags -->
+        <div data-role="fieldcontain">
+            <label for="tags_detail">Tags:</label>
+            <input type="text" name="tags" id="tags_detail" ReadOnly />
+        </div>
+
+        <!-- The map -->
+        <div class="ui-bar-c ui-corner-all ui-shadow" id="map_image_detail"></div>
+
+        <!-- Location related -->
+        <div data-role="fieldcontain">
+            <label for="countrycode_detail">Country:</label>
+            <input type="text" name="countryCode" id="countrycode_detail" ReadOnly />
+        </div>
+
+        <div data-role="fieldcontain">
+            <label for="city_detail">City:</label>
+            <input type="text" name="city" id="city_detail" ReadOnly />
+        </div>
+
+        <div data-role="fieldcontain">
+            <label for="postalcode_detail">Postal code:</label>
+            <input type="text" name="postalCode" id="postalcode_detail" ReadOnly />
+        </div>
+
+        <div data-role="fieldcontain">
+            <label for="street_detail">Street:</label>
+            <input type="text" name="street" id="street_detail" ReadOnly />
+        </div>
+
+        <div data-role="fieldcontain">
+            <label for="houseno_detail">House no:</label>
+            <input type="text" name="houseNo" id="houseno_detail" ReadOnly />
+        </div>
+
+        <ul data-role="listview" id="comments_detail" data-inset="true"></ul>
+
+        <form id="comment_form_details" class="validate">
+            <div data-role="fieldcontain">
+                <label for="message_detail"><strong>New comment:</strong></label>
+                <textarea cols="40" rows="8" name="message" id="message_detail" class="required"></textarea>
+                <input id="comment_submit_detail" type="submit" name="submit" value="Post"
+                data-role="button" data-icon="save" data-theme="a" />
+            </div>
+        </form>
+
+
+    </div><!-- /content -->
+</div><!-- /page -->
+{% endblock %}
+

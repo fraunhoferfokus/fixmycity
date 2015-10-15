@@ -1,0 +1,12 @@
+supervisor==3.0a12
+requests==0.10.2
+Django==1.3.3
+django-supervisor==0.2.3
+django-celery==3.0.0
+django-social-auth==0.6.6
+-e hg+https://bitbucket.org/ubernostrum/django-registration@fad7080fe76955e7d0d3c97bc468ea8360260a6b#egg=django_registration-tip
+-e git://github.com/yourcelf/django-registration-defaults.git@df80e13fd5f4ee3c96d4508fa12278c47c660c37#egg=django_registration_defaults-0.3-py2.6-dev
+-e hg+https://bitbucket.org/lorien/django-urlauth@1a491d82506dbd13b4e93b1d233ab7a68ab91503#egg=django_urlauth-tip
+-e git://github.com/nisc/django-tastypie.git@0f1372a94ba9d7adcbbfdce988012ead6edad623#egg=django_tastypie-dev
+django-grappelli==2.3.7
+feedparser==5.1

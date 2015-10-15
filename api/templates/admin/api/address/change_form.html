@@ -1,0 +1,86 @@
+<!--
+/*******************************************************************************
+ * 
+ * Copyright (c) 2015 Fraunhofer FOKUS, All rights reserved.
+ * 
+ * This library is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation; either
+ * version 3.0 of the License, or (at your option) any later version.
+ * 
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
+ * 
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this library. If not, see <http://www.gnu.org/licenses/>. 
+ * 
+ * AUTHORS: Louay Bassbouss (louay.bassbouss@fokus.fraunhofer.de)
+ *
+ ******************************************************************************/
+
+-->
+{% extends "admin/change_form.html" %}
+{% block extrahead %}
+    {{ block.super }}
+    <script src="http://maps.google.com/maps/api/js?sensor=false"></script>
+    <script>
+      var $ = django.jQuery
+        , map
+        , input_lat
+        , input_lng;
+
+      function savePosition(point) {
+        input_lat.value = point.lat().toFixed(7);
+        input_lng.value = point.lng().toFixed(7);
+        map.panTo(point);
+      }
+
+      function load(lat, lng) {
+        var point = new google.maps.LatLng(lat, lng);
+
+        var options = {
+          zoom: 10,
+          center: point,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+
+        map = new google.maps.Map(document.getElementById("map"), options);
+
+        var marker = new google.maps.Marker({
+          map: map,
+          position: new google.maps.LatLng(lat, lng),
+          draggable: true
+
+        });
+        google.maps.event.addListener(marker, 'dragend', function(mouseEvent) {
+          savePosition(mouseEvent.latLng);
+        });
+
+        google.maps.event.addListener(map, 'click', function(mouseEvent){
+          marker.setPosition(mouseEvent.latLng);
+          savePosition(mouseEvent.latLng);
+        });
+      }
+
+      $(function() {
+        var lat
+          , lng
+          , DEFAULT_LAT = 52.518611
+          , DEFAULT_LNG = 13.408056;
+
+        input_lat = document.getElementById("id_latitude");
+        input_lng = document.getElementById("id_longitude");
+
+        lat = input_lat.value || DEFAULT_LAT;
+        lng = input_lng.value || DEFAULT_LNG;
+
+        load(lat, lng);
+      });
+    </script>
+{% endblock %}
+{% block after_field_sets %}
+    <div id="map" style="border: 4px solid black; width: 400px; height: 300px; margin-top: 15px; margin-left: auto; margin-right: auto;"></div>
+{% endblock %}
+

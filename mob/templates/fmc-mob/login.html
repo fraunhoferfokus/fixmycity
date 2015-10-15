@@ -1,0 +1,65 @@
+<!--
+/*******************************************************************************
+ * 
+ * Copyright (c) 2015 Fraunhofer FOKUS, All rights reserved.
+ * 
+ * This library is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation; either
+ * version 3.0 of the License, or (at your option) any later version.
+ * 
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
+ * 
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this library. If not, see <http://www.gnu.org/licenses/>. 
+ * 
+ * AUTHORS: Louay Bassbouss (louay.bassbouss@fokus.fraunhofer.de)
+ *
+ ******************************************************************************/
+
+-->
+{% extends "fmc-mob/base.html" %}
+{% block body %}
+<!-- the login prompt -->
+<div data-role="page" id="login" data-theme="a" data-url="/fmc-mob/login">
+
+    <div data-role="header" align="center">
+        <img src="{{ STATIC_URL }}fmc-mob/img/logo_fixmycity.png" alt="fixmycity" style="height:65%;" />
+    </div><!-- /header -->
+
+    <div data-role="content">
+
+        <h2>Login</h2>
+
+        {% load url from future %}
+        {% block content %}
+
+        {% if form.errors %}
+        <p><em>Wrong username or password.</em></p>
+        {% endif %}
+
+        <form id="loginForm" class="validate" method="post" action="{% url 'django.contrib.auth.views.login' %}">
+            {% csrf_token %}
+            <fieldset>
+                {{ form.as_p }}
+                <p><input type="submit" value="Login" /></p>
+            </fieldset>
+            <input type="hidden" name="next" value="{{ next }}" />
+            <p>
+            {% comment %}
+            Use a social network for login? <a data-ajax="false" href="/accounts/social">Social login</a><br>
+            Forgot your password? <a href="/accounts/password/reset">Recover it</a><br>
+            Don't have a login? <a href="/accounts/register">Sign up</a>
+            {% endcomment %}
+            Request a login? <a href="/accounts/register">Sign up</a>
+            </p>
+        </form>
+
+        {% endblock %}
+    </div><!-- /content -->
+</div><!-- /page -->
+{% endblock %}
+

@@ -1,0 +1,45 @@
+<!--
+/*******************************************************************************
+ * 
+ * Copyright (c) 2015 Fraunhofer FOKUS, All rights reserved.
+ * 
+ * This library is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation; either
+ * version 3.0 of the License, or (at your option) any later version.
+ * 
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
+ * 
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this library. If not, see <http://www.gnu.org/licenses/>. 
+ * 
+ * AUTHORS: Louay Bassbouss (louay.bassbouss@fokus.fraunhofer.de)
+ *
+ ******************************************************************************/
+
+-->
+{% extends "fmc-mob/base.html" %}
+{% block body %}
+<!-- Start of page: #newreport -->
+<div data-role="page" id="settings" data-theme="a">
+    <div data-role="header">
+      <a href="{% url mob-menu %}" data-icon="arrow-l" data-iconpos="notext" data-direction="reverse" data-rel="back">Back</a>
+      <h1>Settings</h1>
+      <a href="{% url mob-menu %}" data-icon="home" data-iconpos="notext" data-direction="reverse">Home</a>
+    </div><!-- /header -->
+
+    <div data-role="content">
+        <p id="name_paragraph_settings"></p>
+        {% if request.session.phonegap %}
+        <p><a href="{% url mob-dialog-social %}" data-role="button" data-rel="dialog" data-transition="slidedown" data-icon="gear">Social Network Connections</a></p>
+        {% else %}
+        <p><a href="{% url social_done %}" data-role="button" data-icon="gear">Social Network Connections</a></p>
+        {% endif %}
+        <p><a href="{% url mob-logout %}" data-role="button" data-icon="delete">Log Out</a></p>
+    </div><!-- /content -->
+</div><!-- /page -->
+{% endblock %}
+

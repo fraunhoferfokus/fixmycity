@@ -1,0 +1,138 @@
+<!--
+/*******************************************************************************
+ * 
+ * Copyright (c) 2015 Fraunhofer FOKUS, All rights reserved.
+ * 
+ * This library is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation; either
+ * version 3.0 of the License, or (at your option) any later version.
+ * 
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
+ * 
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this library. If not, see <http://www.gnu.org/licenses/>. 
+ * 
+ * AUTHORS: Louay Bassbouss (louay.bassbouss@fokus.fraunhofer.de)
+ *
+ ******************************************************************************/
+
+-->
+{% load value_from_settings %}
+{% value_from_settings "MINIFIED" as minified %}
+{% value_from_settings "MAP_PROVIDER" as map_provider %}
+{% value_from_settings "GEOCODER_PROVIDER" as geocoder_provider %}
+{% value_from_settings "BING_MAP_API_KEY" as bing_map_api_key %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1">
+        <title>{% if request.session.phonegap %}*{% endif %}FixMyCity Mobile</title>
+
+        {% if not request.session.phonegap %}
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon" href="{{ STATIC_URL }}fmc-mob/img/fmc_launcher_icon.png" />
+        {% comment %}
+        <!-- This should be 320x460 instead, or 1004x768 for iPad -->
+        <link rel="apple-touch-startup-image" href="{{ STATIC_URL }}fmc-mob/img/fmc_launcher_icon.png" />
+        {% endcomment %}
+        {% endif %}
+        {% if request.session.phonegap %}
+        <script src="{{ STATIC_URL }}fmc-mob/js/cordova-2.0.0.js"></script>
+        {% endif %}
+        <link rel="stylesheet" href="{{ STATIC_URL }}fmc-mob/jquery/fmc.min.css" />
+        <link rel="stylesheet" href="{{ STATIC_URL }}fmc-mob/jquery/jquery.mobile.structure-1.0.min.css" />
+        <link rel="stylesheet" href="{{ STATIC_URL }}fmc-mob/jquery/jquery.mobile.simpledialog.min.css" />
+        {% if minified %}
+        <link rel="stylesheet" href="{{ STATIC_URL }}fmc-mob/css/style.min.css" />
+        {% else %}
+        <link rel="stylesheet" href="{{ STATIC_URL }}fmc-mob/css/style.css" />
+        {% endif %}
+        <script type="text/javascript">
+          if(typeof console === "undefined"){
+            console = {
+              log: function(msg){},
+              debug: function(msg){},
+              error: function(msg){},
+              warn: function(msg){},
+              info: function(msg){}
+            };
+          }
+        </script>
+        <script src="{{ STATIC_URL }}fmc-mob/jquery/jquery-1.6.4.min.js"></script>
+        <script>
+            $(document).bind("mobileinit", function() {
+                $.mobile.page.prototype.options.domCache = true;
+                if (screen.width > 1000) {
+                  $.mobile.defaultPageTransition = 'fade';
+                } else {
+                  $.mobile.defaultPageTransition = null;
+                  $.mobile.defaultDialogTransition = null;
+                  $.fx.off = true;
+                }
+              {% if request.session.phonegap %}
+                $.support.cors = true;
+                $.mobile.allowCrossDomainPages = true;
+              {% endif %}
+            });
+        </script>
+
+        <script src="{{ STATIC_URL }}fmc-mob/jquery/jquery.mobile-1.0.min.js"></script>
+        <script src="{{ STATIC_URL }}fmc-mob/jquery/jquery.mobile.simpledialog.min.js"></script>
+        {% if map_provider == "bing" %}
+        <script src="http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0"></script>
+        {% else %}
+        <script src="http://maps.google.com/maps/api/js?sensor=true"></script>
+        {% endif %}
+        {% if geocoder_provider == "bing"%}
+        <script src="http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0"></script>
+        {% else %}
+        <script src="http://maps.google.com/maps/api/js?sensor=true"></script>
+        {% endif %}
+        <script type="text/javascript">
+			var settings = {
+					  MAP_PROVIDER: "{{ map_provider }}"
+					, GEOCODER_PROVIDER: "{{ geocoder_provider }}"
+					, BING_MAP_API_KEY: "{{ bing_map_api_key }}"
+			};
+        </script>
+		
+        <script src="{{ STATIC_URL }}fmc-mob/jquery/rating/jquery.raty.min.js"></script>
+        <script src="{{ STATIC_URL }}fmc-mob/jquery/jquery.validate.min.js"></script>
+        <script src="{{ STATIC_URL }}fmc-mob/jquery/jquery.form.min.js"></script>
+        <script src="{{ STATIC_URL }}fmc-mob/js/underscore-min.js"></script>
+        {% if minified %}
+        <script src="{{ STATIC_URL }}fmc-mob/js/app.min.js"></script>
+        {% else %}
+        <script src="{{ STATIC_URL }}fmc-mob/js/map-bing.js"></script>
+        <script src="{{ STATIC_URL }}fmc-mob/js/map-google.js"></script>
+        <script src="{{ STATIC_URL }}fmc-mob/js/geocoder-bing.js"></script>
+        <script src="{{ STATIC_URL }}fmc-mob/js/geocoder-google.js"></script>
+        <script src="{{ STATIC_URL }}fmc-mob/js/helper.js"></script>
+        <script src="{{ STATIC_URL }}fmc-mob/js/reportdetails.js"></script>
+        <script src="{{ STATIC_URL }}fmc-mob/js/reportsnearby.js"></script>
+        <script src="{{ STATIC_URL }}fmc-mob/js/reportsview.js"></script>
+        <script src="{{ STATIC_URL }}fmc-mob/js/customsearch.js"></script>
+        <script src="{{ STATIC_URL }}fmc-mob/js/newreport.js"></script>
+        <script src="{{ STATIC_URL }}fmc-mob/js/settings.js"></script>
+        <script src="{{ STATIC_URL }}fmc-mob/js/login.js"></script>
+        <script src="{{ STATIC_URL }}fmc-mob/js/menu.js"></script>
+        {% endif %}
+
+        <script>
+          App.username = '{{ request.user.username }}';
+          App.userid = '{{ request.user.id }}';
+        </script>
+        <!--<script src="{{ STATIC_URL }}fmc-mob/js/cordova-2.0.0.js"></script>-->
+      </head>
+
+    <body>
+    {% block body %}{% endblock %}
+    </body>
+</html>
+

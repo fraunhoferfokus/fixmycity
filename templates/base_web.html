@@ -1,0 +1,61 @@
+<!--
+/*******************************************************************************
+ * 
+ * Copyright (c) 2015 Fraunhofer FOKUS, All rights reserved.
+ * 
+ * This library is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation; either
+ * version 3.0 of the License, or (at your option) any later version.
+ * 
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
+ * 
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this library. If not, see <http://www.gnu.org/licenses/>. 
+ * 
+ * AUTHORS: Louay Bassbouss (louay.bassbouss@fokus.fraunhofer.de)
+ *
+ ******************************************************************************/
+
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:og="http://opengraphprotocol.org/schema/" xmlns:fb="http://www.facebook.com/2008/fbml">
+  <head>
+      <title>Fix My City {% block title %}{% endblock %}</title>
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+    <style type="text/css">
+      body {background-color: #eee; padding: 10px 20px; font-family: sans-serif; color: #333;}
+      h1, h2, h3 {margin: 0; padding: 0;}
+      h1 {font-size: 1.8em; border-bottom: 1px solid #bbb; width: 95%;}
+      h2 {font-size: 1.3em; border-bottom: 1px solid #ddd; width: 85%;}
+      h3 {font-size: 1.2em;}
+      a, a:visited {color: #459FDA; text-decoration: none;}
+      a:hover {text-decoration: underline;}
+      a img {border: 0;}
+      input[type="text"], input[type="password"] {border: 1px solid #ccc; padding: 3px; width: 300px;}
+      input[type="submit"] {padding: 2px 20px; margin-left: -5px;}
+      label {display: block;}
+      th {text-align: left; padding-right: 25px; font-weight: normal;}
+      th, td {padding: 5px 15px;}
+      tr.even {background-color: #ddd;}
+      .helptext {font-size: 0.9em; color: #aaa; margin: 0; padding: 0;}
+      .description {font-size: 1.0em; color: #333;}
+      a.logout, span.disconnect a, .error {color: #c00;}
+      .error {padding-left: 30px;}
+    </style>
+  </head>
+  <body>
+    <h1>FixMyCity</h1>
+    <p class="description">
+      The awesome citizen reporting tool.
+    </p>
+
+    <h2>{% block heading %}{% endblock %}</h2>
+    <div>
+      {% block content %}{% endblock %}
+    </div>
+</html>
+

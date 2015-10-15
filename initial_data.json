@@ -1,0 +1,20 @@
+[
+    {
+        "pk": 1, 
+        "model": "auth.user", 
+        "fields": {
+            "username": "admin", 
+            "first_name": "", 
+            "last_name": "", 
+            "is_active": true, 
+            "is_superuser": true, 
+            "is_staff": true, 
+            "last_login": "2012-01-06 16:44:12", 
+            "groups": [], 
+            "user_permissions": [], 
+            "password": "sha1$94bcc$db1ff53213f66e5c056f0789a362c09546b19409", 
+            "email": "dasf@asdf.de", 
+            "date_joined": "2012-01-05 20:48:58"
+        }
+    }
+]

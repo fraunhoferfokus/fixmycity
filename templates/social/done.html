@@ -1,0 +1,69 @@
+<!--
+/*******************************************************************************
+ * 
+ * Copyright (c) 2015 Fraunhofer FOKUS, All rights reserved.
+ * 
+ * This library is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation; either
+ * version 3.0 of the License, or (at your option) any later version.
+ * 
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
+ * 
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this library. If not, see <http://www.gnu.org/licenses/>. 
+ * 
+ * AUTHORS: Louay Bassbouss (louay.bassbouss@fokus.fraunhofer.de)
+ *
+ ******************************************************************************/
+
+-->
+{% extends "base.html" %}
+
+{% block extrascripts %}
+        <script>
+          if (window.location.hash == "#_=_") {
+            window.location.hash = "";
+          }
+        </script>
+{% endblock %}
+
+{% block pageargs %}force-flush="true" id="social"{% endblock %}
+
+{% block heading %}Social Network Management{% endblock %}
+
+{% block content %}
+<div>
+  {% if social_auth.not_associated %}
+  <h3>Connect accounts:</h3>
+  <p>
+    {% for type, backends in social_auth.not_associated.items %}
+      {% for backend in backends %}
+      <a href="{% url socialauth_associate_begin backend %}" data-role="button" data-icon="add" data-ajax="false">
+        {% comment %}{{ backend|lower|cut:"-oauth2"|cut:"-oauth"|title }}{% endcomment %}
+        {{ backend|title }}
+      </a>
+      {% endfor %}
+    {% endfor %}
+  </p>
+  {% endif %}
+
+
+  {% if social_auth.associated %}
+  <h3>Disconnect accounts:</h3>
+  <p>
+    {% for type, accounts in social_auth.associated.items %}
+      {% for account in accounts %}
+      <a href={% url socialauth_disconnect_individual account.provider account.id %} data-role="button" data-icon="delete" data-transition="fade">
+        {{ account.provider|title }}
+      </a>
+      {% endfor %}
+    {% endfor %}
+  </p>
+  {% endif %}
+</div>
+{% endblock %}
+

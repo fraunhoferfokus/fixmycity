@@ -1,0 +1,115 @@
+<!--
+/*******************************************************************************
+ * 
+ * Copyright (c) 2015 Fraunhofer FOKUS, All rights reserved.
+ * 
+ * This library is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation; either
+ * version 3.0 of the License, or (at your option) any later version.
+ * 
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
+ * 
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this library. If not, see <http://www.gnu.org/licenses/>. 
+ * 
+ * AUTHORS: Louay Bassbouss (louay.bassbouss@fokus.fraunhofer.de)
+ *
+ ******************************************************************************/
+
+-->
+{% extends "fmc-mob/base.html" %}
+{% block body %}
+<!-- Start of page: #newreport -->
+<div data-role="page" id="newreport" data-theme="a">
+    <div data-role="header">
+      <a href="{% url mob-menu %}" data-icon="arrow-l" data-iconpos="notext" data-direction="reverse" data-rel="back">Back</a>
+      <h1 id="title">New Report</h1>
+      <a href="{% url mob-menu %}" data-icon="home" data-iconpos="notext" data-direction="reverse">Home</a>
+    </div><!-- /header -->
+
+    <div data-role="content">
+        <div class="ui-bar-c ui-corner-all ui-shadow" id="img_preview_div">
+            <img src="" id="img_preview" />
+        </div>
+
+        {% if not request.session.phonegap %}
+        <form id="photo_upload_form" method="POST" enctype="multipart/form-data">
+            <input type="button" id="form_select_new" value="Get photo">
+            <input type="file"   id="form_file_new" name="photo" accept="image/*;capture=camera" />
+        </form>
+        <script src="{{ STATIC_URL }}fmc-mob/js/photo-nongap.min.js"></script>
+        {% else %}
+        <div data-role="controlgroup" data-type="horizontal" id="phonegap_photo_bar">
+          <button data-icon="add" data-iconpos="left" id="takePhoto">Camera</button>
+          <button data-icon="search" data-iconpos="right" id="pickPhoto">Gallery</button>
+        </div>
+        <script src="{{ STATIC_URL }}fmc-mob/js/photo-gap.min.js"></script>
+        <input type="hidden" id="pgPath_new" value="" />
+        {% endif %}
+
+        <form id="newreport_form" method="POST" class="validate">
+
+            <!-- Title -->
+            <div data-role="fieldcontain">
+                <label for="form_title_new"><em>* </em> Title:</label>
+                <input type="text" id="form_title_new" name="title" class="required" />
+            </div>
+
+            <!-- Description -->
+            <div data-role="fieldcontain">
+                <label for="form_description_new"><em>* </em> Description:</label>
+                <textarea id="form_description_new" cols="40" rows="8" name="description" class="required"></textarea>
+            </div>
+
+            {% comment %}
+            <!-- Tags -->
+            <div data-role="fieldcontain">
+                <label for="form_tags_new">Tags:</label>
+                <input id="form_tags_new" type="text" name="tags" />
+            </div>
+            {% endcomment %}
+
+            <!-- Category -->
+            <div data-role="fieldcontain">
+                <label for="category_picker_new" class="select">Category:</label>
+                <select name="category" id="category_picker_new" data-native-menu="false">
+                </select>
+            </div>
+
+            <!-- The map -->
+            <div id="map_canvas_container_new" class="ui-bar-c ui-corner-all ui-shadow">
+                <div id="map_canvas_new"></div>
+                <button data-icon="search" id="get_location_new" data-theme="a" style="overflow: hidden;">Locate me</button>
+            </div>
+
+            <!-- Location related -->
+            <input name="geo_latitude" id="form_latitude" type="hidden" />
+            <input name="geo_longitude" id="form_longitude" type="hidden" />
+            <input name="addr_countryCode" type="hidden" />
+            <input name="addr_city" id='form_city' type="hidden" />
+            <input name="addr_street" id='form_street' type="hidden" />
+            <input name="addr_houseNo" id='form_houseNo' type="hidden" />
+            <input name="addr_postalCode" id='form_postalCode' type="hidden" />
+
+            <!-- Crosspost related -->
+            <p>
+              <label for="crosspostYesNo">Post to social networks:</label>
+              <select name="crosspostYesNo" id="crosspostYesNo" data-role="slider">
+                  <option value="false">No</option>
+                  <option value="true">Yes</option>
+              </select>
+            </p>
+
+            <!-- Create Button -->
+            <p>
+              <input type="submit" id="submit_new" data-icon="save" value="Create" />
+            </p>
+        </form>
+    </div><!-- /content -->
+</div><!-- /page -->
+{% endblock %}
+

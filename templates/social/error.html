@@ -1,0 +1,48 @@
+<!--
+/*******************************************************************************
+ * 
+ * Copyright (c) 2015 Fraunhofer FOKUS, All rights reserved.
+ * 
+ * This library is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation; either
+ * version 3.0 of the License, or (at your option) any later version.
+ * 
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
+ * 
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this library. If not, see <http://www.gnu.org/licenses/>. 
+ * 
+ * AUTHORS: Louay Bassbouss (louay.bassbouss@fokus.fraunhofer.de)
+ *
+ ******************************************************************************/
+
+-->
+{% extends "base.html" %}
+
+{% block heading %}Sorry, but some error occured.{% endblock %}
+
+{% block content %}
+<div>
+  {% if messages %}
+    {% for msg in messages %}
+      <p class="error">
+      {{ msg.message }}<br />
+      {% if msg.extra_tags %}
+      Extra tags: {{ msg.extra_tags }}
+      {% endif %}
+      </p>
+    {% endfor %}
+  {% endif %}
+  {% if error_msg %}
+    <p>Details:</p>
+    <p class="error">{{ error_msg }}</p>
+  {% endif %}
+
+  <p><a data-role="button" data-icon="back" href="{% url social_login %}">Try again</a></p>
+</div>
+{% endblock %}
+

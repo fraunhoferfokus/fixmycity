@@ -1,0 +1,51 @@
+<!--
+/*******************************************************************************
+ * 
+ * Copyright (c) 2015 Fraunhofer FOKUS, All rights reserved.
+ * 
+ * This library is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation; either
+ * version 3.0 of the License, or (at your option) any later version.
+ * 
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
+ * 
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this library. If not, see <http://www.gnu.org/licenses/>. 
+ * 
+ * AUTHORS: Louay Bassbouss (louay.bassbouss@fokus.fraunhofer.de)
+ *
+ ******************************************************************************/
+
+-->
+<html>
+  <body>
+    <div data-role="page" id="dialog_social_external">
+      <script>
+        var LINK = '#social_external_link';
+        $('#dialog_social_external').live('pageinit', function() {
+          $.getJSON('{% url mob-get-key %}', function(data) {
+            $(LINK).attr('href', data.url);
+          });
+        });
+        $(LINK).click(function() {
+          $('.ui-dialog').dialog('close');
+        });
+      </script>
+
+      <div data-role="header" data-theme="a">
+        <h1>Proceed?</h1>
+      </div>
+      <div data-role="content" data-theme="a">
+        <h1>Open external browser?</h1>
+        <p>For security reasons, the social connection management console will be opened in an external browser window.</p>
+        <a href="#" id="social_external_link" data-role="button" data-icon="forward" data-ajax="false" rel="external" target="_blank">OK</a>
+        <a href="#" data-role="button" data-icon="back" data-rel="back">Cancel</a>
+      </div>
+    </div><!-- /dialog -->
+  </body>
+</html>
+
