@@ -1,4 +1,4 @@
-[FixMyCity](http://www.fixmcity.de)
+[FixMyCity](http://www.fixmycity.de)
 ===================================
 
 This is the core project of the FixMyCity Platform. It consists of the following components:
