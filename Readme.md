@@ -58,7 +58,7 @@ Run
    
    >  $ source django1.3/bin/activate  
    
-   >  (django1.3)$ cd ..
+   >  (django1.3)$ cd ../fixmycity
    
  * you should see (django1.3) at your prompt like *(django1.3)$*.  
  * type *deactivate* to leave the environment  
