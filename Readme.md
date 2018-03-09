@@ -22,7 +22,9 @@ Setup
 
  * Install Git and clone this project 
    >  $ sudo apt-get install git  
+   
    >  $ git clone https://github.com/PiratePartyGR/fixmycity.git
+   
    >  rename the folder fixmycity-web to fixmycity
 
  * Install Python 2.7 (should be already installed on the latest Ubuntu versions, you can skip this step)
@@ -49,8 +51,11 @@ Run
    
  * create a folder for your environments and go to this folder in the command prompt  
    >  $ mkdir environments
+   
    >  $ cd environments
+   
    >  $ virtualenv django1.3  
+   
    >  $ source django1.3/bin/activate  
    
  * you should see (django1.3) at your prompt like *(django1.3)$*.  
@@ -67,8 +72,9 @@ Run
    * In production mode you need to host the static files through another server e.g. Apache. Please refer to the [Django 1.3.3 Documentation, section 4.16](https://media.readthedocs.org/pdf/django/1.3.X/django.pdf) for more details.  
  * Generate the database  
    > sudo pip install celery==3.1.17
+   
    > sudo apt-get install python-pil
-   > sudo pip install celery==3.1.17
+   
    > (django1.3)$ sudo python manage.py syncdb  
    
  * Run the testserver  
