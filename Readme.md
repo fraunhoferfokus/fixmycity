@@ -54,36 +54,34 @@ Run
    
    >  $ cd environments
    
-   >  $ virtualenv django1.3  
+   >  $ virtualenv -p python3 django 
    
-   >  $ source django1.3/bin/activate  
+   >  $ source django/bin/activate  
    
-   >  (django1.3)$ cd ../fixmycity
+   >  (django)$ cd ../fixmycity
    
- * you should see (django1.3) at your prompt like *(django1.3)$*.  
+ * you should see (django) at your prompt like *(django)$*.  
  * type *deactivate* to leave the environment  
   
   
 **Fixmycity**:
    
  * To run the testserver you need to install the requirements (only needed for first install).
-   >  (django1.3)$ sudo pip install -r requirements.txt
+   >  (django)$ sudo pip install -r requirements.txt
 
  * To use the static files with the testserver, you have to set the Debug variable to "true" in settings.py.
    * It is not recommended to use *debug = true* in production.
    * In production mode you need to host the static files through another server e.g. Apache. Please refer to the [Django 1.3.3 Documentation, section 4.16](https://media.readthedocs.org/pdf/django/1.3.X/django.pdf) for more details.  
  * Generate the database  
-   > (django1.3)$ sudo pip install celery==3.1.17
+   > (django)$ sudo pip install pillow
    
-   > (django1.3)$ sudo pip install pillow
-   
-   > (django1.3)$ sudo python manage.py syncdb  
+   > (django)$ sudo python manage.py syncdb  
    
  * Run the testserver  
-   >  (django1.3)$ sudo python manage.py runserver 8080  
+   >  (django)$ sudo python manage.py runserver 8080  
  * the number is the port and can be freely chosen.  
  * Create superuser (you can run at any time if you forgot superuser name/pass): use this to login to the admin console
-   > (django1.3)$ python manage.py createsuperuser
+   > (django)$ python manage.py createsuperuser
    
 Test
 =====
