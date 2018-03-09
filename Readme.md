@@ -22,7 +22,7 @@ Setup
 
  * Install Git and clone this project 
    >  $ sudo apt-get install git  
-   >  $ git clone https://github.com/PiratePartyGR/fixmycity/fixmycity-web.git  
+   >  $ git clone https://github.com/PiratePartyGR/fixmycity.git
    >  rename the folder fixmycity-web to fixmycity
 
  * Install Python 2.7 (should be already installed on the latest Ubuntu versions, you can skip this step)
