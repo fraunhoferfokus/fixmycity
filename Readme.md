@@ -4,8 +4,8 @@
 This is the core project of the FixMyCity Platform. It consists of the following components:
 
 * Backend including Server, REST APIs, Database, etc.
-* Admin Console (same as you can see here http://mashweb.fokus.fraunhofer.de/admin/)
-* Mobile Web App (same as you can see here http://mashweb.fokus.fraunhofer.de/fmc-mob/)
+* Admin Console (same as you can see here https://fixmycity.sonsofpiracy.org/admin/)
+* Mobile Web App (same as you can see here https://fixmycity.sonsofpiracy.org/fmc-mob/)
 	* Please note that the Mobile Web App is also available as Cordova (https://cordova.apache.org/) Application for Android, iOS and Windows Phone. Most of the code of the Mobile Web App is reused in the Cordova App. The Cordova App loads its UI from the backend. The Cordova App and the Mobile Web App provide the same features. The only difference is that the Cordova App can be deployed to the App Store, Play Store, etc. and installed as native App on Android, iOS and Windows Phone. The Access to the camera to take picture is handled in a different way as in the Mobile Web App.
 
 	> Cordova projects for all other platforms will be published soon
@@ -22,7 +22,7 @@ Setup
 
  * Install Git and clone this project 
    >  $ sudo apt-get install git  
-   >  $ git clone https://gitlab.fokus.fraunhofer.de/fixmycity/fixmycity-web.git  
+   >  $ git clone https://github.com/PiratePartyGR/fixmycity/fixmycity-web.git  
    >  rename the folder fixmycity-web to fixmycity
 
  * Install Python 2.7 (should be already installed on the latest Ubuntu versions, you can skip this step)
@@ -97,7 +97,7 @@ Test
  
 Disclaimer
 ==========
-The Software is provided as is without any warranty. Contact us at <famecontact@fokus.fraunhofer.de> in case of any questions or comments. Please read [LICENSE file](LICENSE) before using the Software.
+The Software is provided as is without any warranty. Contact us at <info@pirateparty.gr> in case of any questions or comments. Please read [LICENSE file](LICENSE) before using the Software.
 Please contact us if you like to contribute to the project.
 
 License
