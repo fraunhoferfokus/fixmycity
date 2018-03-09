@@ -73,9 +73,9 @@ Run
    * It is not recommended to use *debug = true* in production.
    * In production mode you need to host the static files through another server e.g. Apache. Please refer to the [Django 1.3.3 Documentation, section 4.16](https://media.readthedocs.org/pdf/django/1.3.X/django.pdf) for more details.  
  * Generate the database  
-   > sudo pip install celery==3.1.17
+   > (django1.3)$ sudo pip install celery==3.1.17
    
-   > sudo apt-get install python-pil
+   > (django1.3)$ sudo pip install pillow
    
    > (django1.3)$ sudo python manage.py syncdb  
    
