@@ -4,8 +4,8 @@
 This is the core project of the FixMyCity Platform. It consists of the following components:
 
 * Backend including Server, REST APIs, Database, etc.
-* Admin Console (same as you can see here http://mashweb.fokus.fraunhofer.de/admin/)
-* Mobile Web App (same as you can see here http://mashweb.fokus.fraunhofer.de/fmc-mob/)
+* Admin Console (same as you can see here https://fixmycity.sonsofpiracy.org/admin/)
+* Mobile Web App (same as you can see here https://fixmycity.sonsofpiracy.org/fmc-mob/)
 	* Please note that the Mobile Web App is also available as Cordova (https://cordova.apache.org/) Application for Android, iOS and Windows Phone. Most of the code of the Mobile Web App is reused in the Cordova App. The Cordova App loads its UI from the backend. The Cordova App and the Mobile Web App provide the same features. The only difference is that the Cordova App can be deployed to the App Store, Play Store, etc. and installed as native App on Android, iOS and Windows Phone. The Access to the camera to take picture is handled in a different way as in the Mobile Web App.
 
 	> Cordova projects for all other platforms will be published soon
@@ -22,8 +22,9 @@ Setup
 
  * Install Git and clone this project 
    >  $ sudo apt-get install git  
-   >  $ git clone https://gitlab.fokus.fraunhofer.de/fixmycity/fixmycity-web.git  
-   >  rename the folder fixmycity-web to fixmycity
+   
+   >  $ git clone https://github.com/PiratePartyGR/fixmycity.git
+   
 
  * Install Python 2.7 (should be already installed on the latest Ubuntu versions, you can skip this step)
    >  $ sudo apt-get install python
@@ -49,30 +50,37 @@ Run
    
  * create a folder for your environments and go to this folder in the command prompt  
    >  $ mkdir environments
-   >  $ cd environments
-   >  $ virtualenv django1.3  
-   >  $ source django1.3/bin/activate  
    
- * you should see (django1.3) at your prompt like *(django1.3)$*.  
+   >  $ cd environments
+   
+   >  $ virtualenv -p python django 
+   
+   >  $ source django/bin/activate  
+   
+   >  (django)$ cd ../fixmycity
+   
+ * you should see (django) at your prompt like *(django)$*.  
  * type *deactivate* to leave the environment  
   
   
 **Fixmycity**:
    
  * To run the testserver you need to install the requirements (only needed for first install).
-   >  (django1.3)$ sudo pip install -r requirements.txt
+   >  (django)$ sudo pip install -r requirements.txt
 
  * To use the static files with the testserver, you have to set the Debug variable to "true" in settings.py.
    * It is not recommended to use *debug = true* in production.
    * In production mode you need to host the static files through another server e.g. Apache. Please refer to the [Django 1.3.3 Documentation, section 4.16](https://media.readthedocs.org/pdf/django/1.3.X/django.pdf) for more details.  
  * Generate the database  
-   > (django1.3)$ sudo python manage.py syncdb  
+   > (django)$ sudo pip install pillow
+   
+   > (django)$ sudo python manage.py syncdb  
    
  * Run the testserver  
-   >  (django1.3)$ sudo python manage.py runserver 8080  
+   >  (django)$ sudo python manage.py runserver 8080  
  * the number is the port and can be freely chosen.  
  * Create superuser (you can run at any time if you forgot superuser name/pass): use this to login to the admin console
-   > (django1.3)$ python manage.py createsuperuser
+   > (django)$ python manage.py createsuperuser
    
 Test
 =====
@@ -97,7 +105,7 @@ Test
  
 Disclaimer
 ==========
-The Software is provided as is without any warranty. Contact us at <famecontact@fokus.fraunhofer.de> in case of any questions or comments. Please read [LICENSE file](LICENSE) before using the Software.
+The Software is provided as is without any warranty. Contact us at <info@pirateparty.gr> in case of any questions or comments. Please read [LICENSE file](LICENSE) before using the Software.
 Please contact us if you like to contribute to the project.
 
 License
