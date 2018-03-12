@@ -25,7 +25,6 @@ Setup
    
    >  $ git clone https://github.com/PiratePartyGR/fixmycity.git
    
-   >  rename the folder fixmycity-web to fixmycity
 
  * Install Python 2.7 (should be already installed on the latest Ubuntu versions, you can skip this step)
    >  $ sudo apt-get install python
@@ -54,7 +53,7 @@ Run
    
    >  $ cd environments
    
-   >  $ virtualenv -p python3 django 
+   >  $ virtualenv -p python django 
    
    >  $ source django/bin/activate  
    
